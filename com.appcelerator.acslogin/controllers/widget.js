@@ -25,7 +25,10 @@ function loginClick(e) {
 
 function forgotClick(e) {
 	resetLoginForm();
-	animation.fadeOut($.acsLogin, 200);
+	animation.fadeOut($.acsLogin, 200,function(){
+		$.acsLogin.visible = false;
+	});
+	$.acsloginPass.visible = true;
 	animation.fadeIn($.acsloginPass, 500);
 }
 
@@ -35,7 +38,10 @@ function remindClick(e) {
 	}, function(e) {
 		if(e.success == 1){
 			$.emailLbl.text = 'Password reminder sent';
-			animation.fadeOut($.acsloginPass, 200);
+			animation.fadeOut($.acsloginPass, 200,function(){
+				$.acsloginPass.visible =false;
+			});
+			$.acsLogin.visible =true;
 			animation.fadeIn($.acsLogin, 500);
 		} else {
 			$.emailLbl.text = 'Error: ' + e.message;
@@ -47,8 +53,13 @@ function remindClick(e) {
 
 
 function loginlinkClick(e) {
-	animation.fadeOut($.acsloginAccount, 200);
-	animation.fadeOut($.acsloginPass, 200);
+	animation.fadeOut($.acsloginAccount, 200 , function(){
+		$.acsloginAccount.visible = false;
+	});
+	animation.fadeOut($.acsloginPass, 200, function(){
+		$.acsloginPass.visible = false;
+	});
+	$.acsLogin.visible = true;
 	animation.fadeIn($.acsLogin, 500);
 	$.emailLbl.text = '';
 	resetAccountForm();
@@ -57,7 +68,10 @@ function loginlinkClick(e) {
 
 function createAccountClick(e){
 	resetLoginForm();
-	animation.fadeOut($.acsLogin, 200);
+	animation.fadeOut($.acsLogin, 200,function(){
+		$.acsLogin.visible = false;
+	});
+	$.acsloginAccount.visible = true;
 	animation.fadeIn($.acsloginAccount, 500);
 	
 	
